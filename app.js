@@ -127,11 +127,17 @@ app.get("/about", function(req, res){
 });
 
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-
-app.listen(process.env.PORT, function() {
-  console.log("Server started successfully.");
+var server_port = process.env.YOUR_PORT || process.env.PORT || 3000;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+app.listen(server_port, server_host, function() {
+    console.log('Listening on port.', server_port);
 });
+
+// const port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+
+// app.listen(port, function() {
+//   console.log("Server started successfully.");
+// });
